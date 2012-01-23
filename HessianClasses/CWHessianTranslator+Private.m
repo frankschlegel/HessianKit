@@ -20,7 +20,7 @@
 {
   NSString* distantTypeName = [typeNameTranslations objectForKey:localTypeName];
   if (distantTypeName == nil) {
-    NSString* distantTypeName = localTypeName;
+    distantTypeName = localTypeName;
     if (_localTypeNamePrefix != nil && [localTypeName hasPrefix:_localTypeNamePrefix]) {
       distantTypeName = [localTypeName substringFromIndex:[_localTypeNamePrefix length]];
     }
