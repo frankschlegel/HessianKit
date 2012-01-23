@@ -292,9 +292,12 @@
     [self writeString:remoteId];
   } else if ([object conformsToProtocol:@protocol(NSCoding)]) {
   	[self.objectReferences addObject:object];
-    NSString* className = [self classNameForClass:[object class]];
-    if (!className && [object isKindOfClass:[CWValueObject class]]) {
+    NSString* className = nil;
+    if ([object isKindOfClass:[CWValueObject class]]) {
       className = [self classNameForProtocol:((CWValueObject*)object).protocol];
+    }
+    if (!className) {
+      className = [self classNameForClass:[object class]];
     }
     if (!className) {
       className = NSStringFromClass([object class]);
